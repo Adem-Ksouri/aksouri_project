@@ -53,7 +53,6 @@ def data_extraction_step(df, attributes):
 
     return df_flat
 
-
 # COMMAND ----------
 
 
