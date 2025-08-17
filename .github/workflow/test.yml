@@ -1,0 +1,33 @@
+name: Validate and Deploy
+
+concurrency: 1
+
+on:
+  workflow_dispatch: 
+
+  pull_request: 
+    types:
+      - opened
+      - synchronize
+      - closed
+    branches: 
+      - dev
+
+jobs:
+  deploy:
+    name: deploy to dev
+    runs-on: ubuntu_latest
+    
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: databricks/setup-cli@main
+
+      - name: deploy to dev
+        run: databricks bundle deploy --target dev
+        env: 
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: dev
+          
