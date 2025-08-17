@@ -25,7 +25,7 @@ def filter_Data(df, column):
 
 def data_extraction_step(df, attributes):
     schema = StructType([
-        StructField("StepTiming", MapType(StringType(), StringType())),  # or nested struct
+        StructField("StepTiming", MapType(StringType(), StringType())),  
         StructField("DataExtractionEngine", IntegerType()),
         StructField("DataExtractionEngineStr", StringType()),
         StructField("LLMModel", StringType()),
@@ -53,6 +53,5 @@ def data_extraction_step(df, attributes):
 
     return df_flat
 
-# COMMAND ----------
 
 
