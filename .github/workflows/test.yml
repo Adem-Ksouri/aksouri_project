@@ -1,7 +1,5 @@
 name: Validate and Deploy
 
-concurrency: 1
-
 on:
   workflow_dispatch: 
 
