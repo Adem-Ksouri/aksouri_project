@@ -14,7 +14,8 @@ on:
 jobs:
   deploy:
     name: deploy to dev
-    runs-on: ubuntu_latest
+    environment: dev
+    runs-on: ubuntu-latest
     
     steps:
 
@@ -23,7 +24,7 @@ jobs:
       - uses: databricks/setup-cli@main
 
       - name: deploy to dev
-        run: databricks bundle deploy --target dev
+        run: databricks bundle deploy --target dev --verbose
         env: 
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
